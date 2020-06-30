@@ -1,12 +1,12 @@
 
 # INITIALIZATION: libraries, parameters, network...
-from keras.models import Sequential      # One layer after the other
-from keras.layers import Dense, Flatten  # Dense layers are fully connected layers, Flatten layers flatten out multidimensional inputs
+from tensorflow.keras.models import Sequential      # One layer after the other
+from tensorflow.keras.layers import Dense, Flatten  # Dense layers are fully connected layers, Flatten layers flatten out multidimensional inputs
 from collections import deque            # For storing moves 
 import numpy as np
-from keras.layers import Dense,Dropout
+from tensorflow.keras.layers import Dense,Dropout
 from tqdm import tqdm
-from keras import optimizers
+from tensorflow.keras import optimizers
 np.random.seed(7)
 import random
 from collections import Counter
