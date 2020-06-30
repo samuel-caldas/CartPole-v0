@@ -1,4 +1,3 @@
-
 # INITIALIZATION: libraries, parameters, network...
 from tensorflow.keras.models import Sequential      # One layer after the other
 from tensorflow.keras.layers import Dense, Flatten  # Dense layers are fully connected layers, Flatten layers flatten out multidimensional inputs
@@ -10,11 +9,14 @@ from tensorflow.keras import optimizers
 np.random.seed(7)
 import random
 from collections import Counter
-
-
 import gym
-env = gym.make('CartPole-v0')
 
+#ENV = 'Breakout-ram-v0'
+ENV = 'LunarLander-v2'
+#ENV = 'CartPole-v0'
+#ENV = 'CartPole-v1'
+
+env = gym.make(ENV)
 
 model = Sequential()
 model.add(Dense(50, input_dim=4,activation='relu'))
