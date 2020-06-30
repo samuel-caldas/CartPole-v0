@@ -12,9 +12,10 @@ from collections import Counter
 import gym
 
 #ENV = 'Breakout-ram-v0'
-ENV = 'LunarLander-v2'
-#ENV = 'CartPole-v0'
+#ENV = 'LunarLander-v2'
+ENV = 'CartPole-v0'
 #ENV = 'CartPole-v1'
+#ENV = 'Pendulum-v0'
 
 env = gym.make(ENV)
 
@@ -31,17 +32,11 @@ Dropout(0.8)
 model.add(Dense(1,kernel_initializer='normal',activation='sigmoid'))    # Same number of outputs as possible actions
 
 
-
-
-observetime = 500                        # Number of timesteps we will be acting on the game and observing results
-epsilon = 0.7                            # Probability of doing a random move
-score_requirement = 50                   # score requirement  
-
-
-
+observetime = 500       # Number of timesteps we will be acting on the game and observing results
+epsilon = 0.7           # Probability of doing a random move
+score_requirement = 50  # score requirement  
 
 # create training datasets correspoding to states and actions
-
 def population(initial_games): 
     accepted_scores=[]
     training_data=[]
@@ -82,7 +77,6 @@ def population(initial_games):
                 
                 training_data.append([data[0],output])
                                 
-                
         env.reset()
         scores.append(score)
     
@@ -93,21 +87,14 @@ def population(initial_games):
     
     return training_data
 
-
-
-
 training_data = population(10000)
-
-
 
 X = np.array([i[0] for i in training_data])
 y = np.array([i[1] for i in training_data])
 
-
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.fit(X,y,batch_size=100,epochs=30)
-
 
 def play():#import gym                                # To train our network
     env = gym.make('CartPole-v0') 
@@ -130,8 +117,3 @@ def play():#import gym                                # To train our network
     return tot_reward
 
 play()
-
-
-
-
-
